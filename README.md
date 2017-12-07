@@ -1,4 +1,8 @@
 # Weather Alert
+
+Sends a push message to iOs devices which are registered to topics in AWS SNS
+
+
     ruby weather-alert.rb
 
 ###Environment Variables
