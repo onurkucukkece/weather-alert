@@ -29,8 +29,6 @@ def run
   average = page.css('.destination-info').at('li:contains("High Temperature") .destination-info__details').text.to_i
 
 
-  # options = { units: "metric", APPID: ENV['OPENWEATHER_APPID'] }
-  # weather = OpenWeather::Current.city('Istanbul, TR', options)
   # Istanbul weather
   weather = Openweather2.get_weather(city: 'istanbul', units: 'metric')
   current = weather.temperature
