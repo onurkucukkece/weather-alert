@@ -5,8 +5,23 @@ require 'open-uri'
 require 'openweather2'
 require 'aws-sdk'
 
+def init_aws
+  Aws.config.update({
+    region: ENV['AWS_REGION'],
+    credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
+  })
+end
+
+def init_openweather
+  Openweather2.configure do |config|
+    config.endpoint = 'http://api.openweathermap.org/data/2.5/weather'
+    config.apikey = ENV['OPENWEATHER_APPID']
+  end
+end
 
 def run
+  init_aws
+  init_openweather
   url = "http://www.holiday-weather.com/istanbul/averages/#{Time.now.strftime('%B')}/"
   puts "http://www.holiday-weather.com/istanbul/averages/#{Time.now.strftime('%B')}/"
   page = Nokogiri::HTML(open(url))
