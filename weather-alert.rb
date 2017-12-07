@@ -1,4 +1,10 @@
 require 'launchy'
+require 'nokogiri'
+require 'time'
+require 'open-uri'
+require 'openweather2'
+require 'aws-sdk'
+
 
 def run
   url = "http://www.holiday-weather.com/istanbul/averages/#{Time.now.strftime('%B')}/"
