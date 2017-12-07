@@ -2,10 +2,19 @@
 
 Sends a push message to iOs devices which are registered to topics in AWS SNS
 
+## Usage
 
-    ruby weather-alert.rb
+    $ bundle
 
-###Environment Variables
+Set the environment variables and run
+
+    $ ruby weather-alert.rb
+    
+For development, create a file Procfile.dev.env, set the variables in and run
+
+    $ foreman run -e Procfile.dev.env ruby weather-alert.rb
+
+### Environment Variables
 
 ```
 OPENWEATHER_APPID
