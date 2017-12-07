@@ -22,18 +22,20 @@ end
 def run
   init_aws
   init_openweather
+
+  # Istanbul average weather
   url = "http://www.holiday-weather.com/istanbul/averages/#{Time.now.strftime('%B')}/"
-  puts "http://www.holiday-weather.com/istanbul/averages/#{Time.now.strftime('%B')}/"
   page = Nokogiri::HTML(open(url))
   average = page.css('.destination-info').at('li:contains("High Temperature") .destination-info__details').text.to_i
 
 
   # options = { units: "metric", APPID: ENV['OPENWEATHER_APPID'] }
   # weather = OpenWeather::Current.city('Istanbul, TR', options)
+  # Istanbul weather
   weather = Openweather2.get_weather(city: 'istanbul', units: 'metric')
   current = weather.temperature
 
-  puts "Current: #{current}, Highest average: #{average}"
+  puts "Current: #{current}°C, Highest average: #{average}°C"
 
   # TODO: compare weather
   # puts "#{current - average} hot than average" if current - average > 4
